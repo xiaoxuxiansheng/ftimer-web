@@ -1,0 +1,19 @@
+$color:#eee;
+body{
+// 禁止选中文字 user-select:none; background-color: $color;
+} img{
+// 禁止拖动图片
+    -webkit-user-drag:none;
+}
+.logo {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.3);
+}
+.site-layout .site-layout-background {
+    background: #fff;
+}
+
+.site-layout .crumb{
+    line-height: 64px;
+}

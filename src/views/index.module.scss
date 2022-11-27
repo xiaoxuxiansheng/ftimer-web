@@ -1,0 +1,13 @@
+.page-container {
+    :global {
+      .ant-pro-page-container-children-content {
+        margin: 0;
+        background: #fff;
+      }
+  
+      .ant-pro-table-search-query-filter {
+        margin: 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+    }
+  }

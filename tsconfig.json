@@ -14,7 +14,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@/*":["src/*"],
+      "@@/*": ["./src/.umi/*"] // 解决 umi 找不到部分模块的问题
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
