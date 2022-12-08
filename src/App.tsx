@@ -24,7 +24,7 @@ function ToHome(){
 function PageGuadian(){
   const outlet = useRoutes(router);
   const location = useLocation();
-  const app = localStorage.getItem("app");
+  const app = sessionStorage.getItem("app");
   if (app && location.pathname === "/login"){
     return <ToHome></ToHome>
   }

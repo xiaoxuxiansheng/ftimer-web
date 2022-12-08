@@ -58,7 +58,7 @@ const TimerList: FC = () => {
   };
 
   const onSubmit = (timer: TimerType) => {
-    timer.app = localStorage.getItem("app") as string;
+    timer.app = sessionStorage.getItem("app") as string;
     timer.creator = timer.app;
     setIsModalVisible(false);
     const submit = async()=>{
@@ -159,7 +159,7 @@ const TimerList: FC = () => {
 
 
   return (
-    <PageContainer title="FTimer 定时器" className={styles['timers']}>
+    <PageContainer title="XTimer 定时器" className={styles['timers']}>
       <br></br>
       <br></br>
       <div>
@@ -189,7 +189,7 @@ const TimerList: FC = () => {
               const { code,msg, data, total } = await getAppTimers({
                 pageIndex: params.current,
                 pageSize: params.pageSize,
-                app: localStorage.getItem("app") as string,
+                app: sessionStorage.getItem("app") as string,
                 name: params.name,
               });
               if (code != 0){

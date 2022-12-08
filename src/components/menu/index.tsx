@@ -1,6 +1,7 @@
 import {
     FieldTimeOutlined,
     FilePdfOutlined,
+    LineChartOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu, message as Message, Button } from 'antd';
@@ -24,11 +25,11 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-    getItem('定时任务', '/timers', <FieldTimeOutlined />),
-    getItem('待解锁项目...', '/docs1', <FilePdfOutlined />),
-    getItem('待解锁项目...', '/docs2', <FilePdfOutlined />),
-    getItem('待解锁项目...', '/docs3', <FilePdfOutlined />),
-    getItem('待解锁项目...', '/docs4', <FilePdfOutlined />),
+    getItem('主页', '/', <FieldTimeOutlined />),
+    getItem('XTimer定时器', '/timers', <FieldTimeOutlined />),
+    getItem('XTimer监控大盘', '/timer/monitor', <LineChartOutlined />),
+    getItem('XTimer技术文档', '/timer/doc', <FilePdfOutlined />),
+    getItem('待解锁项目...', '/err', <FilePdfOutlined />)
 ];
 
 
@@ -36,12 +37,13 @@ const Comp: FC = () => {
     const currentRoute = useLocation();
     const navigateTo = useNavigate();
     const handleClick = (e: { key: string }) => {
-        if (e.key == '/timers') {
-            navigateTo(e.key);
-            return
+        if (e.key == '/err') {
+            navigateTo('/')
+            Message.error("抱歉，仍在实现中~~ ^……^")
+            return 
         }
-        navigateTo('/')
-        Message.error("抱歉，仍在实现中~~ ^……^")
+        navigateTo(e.key);
+        return
     }
 
 

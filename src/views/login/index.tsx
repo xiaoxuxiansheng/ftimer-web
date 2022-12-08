@@ -26,21 +26,21 @@ const View = () => {
 
     const goLogin = () => {
         if (username == 'test' && password == 'test'){
-            localStorage.setItem("app", username);
+            sessionStorage.setItem("app", username);
             navigator("/timers");
             Message.success("登录成功~");
             return
         }
 
         if (username == 'guest' && password == 'guest') {
-            localStorage.setItem("app", username);
+            sessionStorage.setItem("app", username);
             navigator("/timers");
             Message.success("登录成功~");
             return
         }
 
         if (username == 'admin' && password == 'admin') {
-            localStorage.setItem("app", username);
+            sessionStorage.setItem("app", username);
             navigator("/timers");
             Message.success("登录成功~");
             return
