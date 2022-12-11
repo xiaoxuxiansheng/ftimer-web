@@ -27,21 +27,21 @@ const View = () => {
     const goLogin = () => {
         if (username == 'test' && password == 'test'){
             sessionStorage.setItem("app", username);
-            navigator("/timers");
+            navigator("/");
             Message.success("登录成功~");
             return
         }
 
         if (username == 'guest' && password == 'guest') {
             sessionStorage.setItem("app", username);
-            navigator("/timers");
+            navigator("/");
             Message.success("登录成功~");
             return
         }
 
         if (username == 'admin' && password == 'admin') {
             sessionStorage.setItem("app", username);
-            navigator("/timers");
+            navigator("/");
             Message.success("登录成功~");
             return
         }
@@ -55,7 +55,7 @@ const View = () => {
             <div className={styles.loginBox + " loginbox"}>
                 {/**标题部分*/}
                 <div className={styles.title}>
-                    <h1>小徐先生&nbsp;·&nbsp;个人门户</h1>
+                    <h1>小徐先生&nbsp;·&nbsp;XTimer 后台系统</h1>
                     <p>祝您开心每一天~</p>
                 </div>
                 {/**表单部分*/}

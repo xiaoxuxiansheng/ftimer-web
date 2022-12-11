@@ -2,14 +2,14 @@ import { PageContainer } from '@ant-design/pro-layout';
 
 const Monitor = () => {
     return (
-        <PageContainer title="XTimer 定时器监控看板">
+        <PageContainer title="XTimer 压测文档分享">
             <iframe
-                id="monitor"
-                name="XTimer 监控看板"
-                src="http://43.143.168.5:3000/d/-D2G_hKVz/xtimer-jian-kong-da-pan?kiosk"
+                id="test"
+                name="XTimer 压测文档"
+                src="https://juejin.cn/post/7175433651327336504"
                 width="100%"
                 height="700"
-                title="XTimer 监控看板"
+                title="XTimer 压测文档"
                 frameBorder="yes"
             />
         </PageContainer>

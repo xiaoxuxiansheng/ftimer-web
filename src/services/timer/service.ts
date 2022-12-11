@@ -17,10 +17,10 @@ export const getAppTimers = async (params: GetAppTimersReq): Promise<GetAppTimer
   });
 }
 
-export const getTimer = async (id: number): Promise<GetTimerResp> => {
+export const getTimer = async (app: string,id: number): Promise<GetTimerResp> => {
   return request.get("/api/timer/v1/def", {
     method: "get",
-    params: {"id":id},
+    params: {"id":id,"app":app},
   });
 };
 
@@ -31,21 +31,33 @@ export const getTasks = async (timerID: number): Promise<GetTasksResp> => {
   });
 };
 
-export const enableTimer = async(timerID :number):Promise<Response> =>{
-  return request.post("/api/timer/v1/enable", {"id":timerID});
+export const enableTimer = async(app: string, timerID :number):Promise<Response> =>{
+  return request.post("/api/timer/v1/enable", {"id":timerID,"app":app});
 }
 
-export const unableTimer = async(timerID :number):Promise<Response> =>{
-  return request.post("/api/timer/v1/unable", {"id":timerID});
+export const unableTimer = async(app: string, timerID :number):Promise<Response> =>{
+  return request.post("/api/timer/v1/unable", {"id":timerID,"app":app});
 }
 
-export const deleteTimer = async(timerID: number):Promise<Response> =>{
+export const deleteTimer = async(app: string, timerID: number):Promise<Response> =>{
   return request.delete("/api/timer/v1/def", {
     method:"delete",
-    data:{"id":timerID}
+    data:{"id":timerID,"app":app}
   });
 }
 
 export const createTimer = async (data: TimerType): Promise<CreateTimerResp> =>{
   return request.post("/api/timer/v1/def", data);
+}
+
+export const getTimersByName = async(params: GetAppTimersReq):Promise<GetAppTimersResp> => {
+  return request.get("/api/timer/v1/defsByName", {
+    method: "get",
+    params: {
+      "app":params.app,
+      "fuzzyName":params.name,
+      "pageIndex":params.pageIndex,
+      "pageSize":params.pageSize,
+    },
+  });
 }

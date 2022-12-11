@@ -13,7 +13,6 @@ import {
   TableListPagination,
   TimerType,
   TimerStatusType,
-  CreateTimerResp,
 } from '@/services/timer/type';
 import {
   getAppTimers,
@@ -21,6 +20,7 @@ import {
   unableTimer,
   deleteTimer,
   createTimer,
+  getTimersByName,
 } from '@/services/timer/service';
 
 import styles from './index.module.scss';
@@ -37,20 +37,23 @@ const TimerList: FC = () => {
   const navigator = useNavigate()
 
   const onSearch = (name: string) => {
-    actionRef.current?.reload();
     if (name == "") {
+      actionRef.current?.reload();
       return
     }
 
-    let newTimers: TimerType[] = [];
-    for (var i = 0; i < timers.length; i++) {
-      if (timers[i].name == name) {
-        newTimers.push(timers[i]);
-        break
+    const searchTimers = async()=>{
+      const { code,msg, data, total } = await getTimersByName({
+        app: sessionStorage.getItem("app") as string,
+        name: name,
+      });
+      if (code != 0){
+         Message.error(msg);
       }
+      setTimers(data);
     }
 
-    setTimers(newTimers);
+    searchTimers();
   };
 
   const onCreate = () => {
@@ -74,16 +77,17 @@ const TimerList: FC = () => {
   }
 
   const onStatusChange = (timer: TimerType) => () => {
+    const app = sessionStorage.getItem("app") as string
     const changeStatus = async ()=>{
       if (timer.status == TimerStatusType.enabled){
-        const{code,msg} = await unableTimer(timer.id);
+        const{code,msg} = await unableTimer(app,timer.id);
         if (code != 0){
           Message.error(msg);
         }else{
           Message.success("去激活成功!");
         }
       } else{
-        const{code,msg} = await enableTimer(timer.id);
+        const{code,msg} = await enableTimer(app,timer.id);
         if (code != 0){
           Message.error(msg);
         }else{
@@ -101,7 +105,8 @@ const TimerList: FC = () => {
   }
 
   const onDeleteTimer = (id: number) => async () => {
-    const {code,msg} = await deleteTimer(id);
+    const app = sessionStorage.getItem("app") as string
+    const {code,msg} = await deleteTimer(app,id);
     if (code == 0){
       Message.success("操作成功!");
     }else{

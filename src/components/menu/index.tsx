@@ -25,11 +25,11 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-    getItem('主页', '/', <FieldTimeOutlined />),
+    getItem('XTimer主页', '/', <FieldTimeOutlined />),
     getItem('XTimer定时器', '/timers', <FieldTimeOutlined />),
-    getItem('XTimer监控大盘', '/timer/monitor', <LineChartOutlined />),
+    getItem('XTimer监控看板', '/timer/monitor', <LineChartOutlined />),
     getItem('XTimer技术文档', '/timer/doc', <FilePdfOutlined />),
-    getItem('待解锁项目...', '/err', <FilePdfOutlined />)
+    getItem('XTimer压测文档', '/timer/test', <FilePdfOutlined />)
 ];
 
 

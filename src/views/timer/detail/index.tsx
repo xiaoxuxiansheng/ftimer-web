@@ -52,7 +52,7 @@ const TimerDetail: FC = () => {
 
         const getTimerAndTasks = async ()=>{
             try {
-                const {code,msg,data} = await getTimer(_timerID);
+                const {code,msg,data} = await getTimer(sessionStorage.getItem("app") as string ,_timerID);
                 if (code != 0) {
                     Message.error(msg);
                     return

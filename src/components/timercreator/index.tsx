@@ -45,9 +45,11 @@ const TimerCreator: FC<TimerCreatorProps> = ({
         <Item
           label="cron 配置"
           name="cron"
-          rules={[{ required: true, message: '请输入定时器 cron 表达式' }]}
+          key={String(Date.now())}
+          rules={[{ required:true, message: '请输入定时器 cron 表达式' }]}
+          initialValue="* */15 * * * ? *"
         >
-          <Input placeholder='* */15 * * * ? *' />
+          <Input placeholder='* */15 * * * ? *' defaultValue="* */15 * * * ? *" name="cron"></Input>
         </Item>
         <Item
           label="通知类型"
@@ -67,12 +69,14 @@ const TimerCreator: FC<TimerCreatorProps> = ({
                     <br></br>
                     <br></br>
                     <Item
+                      key={String(Date.now())}
                       name="url"
                       label="url"
                       tooltip="URL 路径"
-                      rules={[{ required: true, message: '请输入 url 路径' }]}
+                      rules={[{ required:true, message: '请输入 url 路径' }]}
+                      initialValue='http://localhost:8092/api/mock/v1/mock'
                     >
-                      <Input placeholder='www.baidu.com' />
+                      <Input placeholder='http://localhost:8092/api/mock/v1/mock' defaultValue='http://localhost:8092/api/mock/v1/mock' name="url"></Input>
                     </Item>
                     <Item
                       name="method"
@@ -86,13 +90,6 @@ const TimerCreator: FC<TimerCreatorProps> = ({
                         <Radio value="POST"> POST </Radio>
                         <Radio value="PATCH"> PATCH </Radio>
                       </Radio.Group>
-                    </Item>
-                    <Item
-                      name="header"
-                      label="header"
-                      tooltip="header 请求头"
-                    >
-                      <TextArea autoSize={{ minRows: 1 }} placeholder='{"content-type":"application/json"}' />
                     </Item>
                     <Item
                       name="body"
